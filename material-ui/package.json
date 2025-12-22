@@ -19,5 +19,13 @@
     "@embeddable.com/sdk-core": "^4.1.4",
     "@embeddable.com/sdk-react": "^4.0.8",
     "cross-env": "^10.1.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@fontsource/roboto": "^5.2.9",
+    "@mui/material": "^7.3.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   }
 }
