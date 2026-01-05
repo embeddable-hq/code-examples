@@ -1,7 +1,7 @@
 cubes:
   - name: products
-    data_source: default
     sql_table: public.products
+    data_source: default
 
     dimensions:
       - name: id
@@ -27,11 +27,12 @@ cubes:
         type: sum
         title: Total USD
         sql: price_usd
-        meta: 
-          pretext: '$'
-          posttext: ''
 
     joins:
-      - name: orders
+      - name: orders # the name of the data model to join to (not the table)
         sql: "{CUBE}.id = {orders}.product_id"
         relationship: one_to_many
+
+    pre_aggregations:
+    # Pre-aggregation definitions go here.
+    # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started

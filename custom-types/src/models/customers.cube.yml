@@ -1,8 +1,11 @@
 cubes:
   - name: customers
     title: My customers
-    data_source: default
     sql_table: public.customers
+    data_source: default
+
+    # You can specificy custom SQL with which to query the table, if desired. Otherwise
+    # it will default to `select * from public.customers`
 
     # sql: >
     #   select *
@@ -20,6 +23,12 @@ cubes:
         sql: email
         type: string
 
+      # Dimensions can be concatenated from multiple columns
+      # - name: full_name
+      #   title: "Full name"
+      #   sql: CONCAT(first_name, ' ', last_name)
+      #   type: string
+
       - name: country
         title: 'Country of origin'
         sql: country
@@ -29,34 +38,10 @@ cubes:
         sql: signed_up_at
         type: time
 
-      # - name: full_name
-      #   title: "Full name"
-      #   sql: CONCAT(first_name, ' ', last_name)
-      #   type: string
-
-
     measures:
       - name: count
         type: count
         title: '# of customers'
-
-        # Measure for testing negative values
-      - name: negative_values
-        sql: (-1 * (RANDOM() * 100)) + 50
-        type: number
-        title: 'Negative Value'
-
-      # Measure for testing decimal values
-      - name: decimal_values
-        sql: (RANDOM() * 5)
-        type: number
-        title: 'Decimal Value'
-      
-      # Measure for testing whole numbers less than 5
-      - name: small_numbers
-        sql: FLOOR(RANDOM() * 5)
-        type: number
-        title: 'Whole Numbers < 5'
 
     joins:
       - name: orders # the name of the data model to join to (not the table)

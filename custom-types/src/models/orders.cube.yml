@@ -1,7 +1,7 @@
 cubes:
   - name: orders
-    data_source: default
     sql_table: public.orders
+    data_source: default
 
     dimensions:
       - name: id
@@ -12,27 +12,25 @@ cubes:
       - name: created_at
         sql: created_at
         type: time
-        description: 'The time when the order was created'
+        meta:
+          some_meta: 5 # will be passed as a prop to your components
 
     measures:
       - name: count
         type: count
-        title: '# of orders'
-        description: 'Count of orders'
-
-      - name: rolling_count
-        type: count
-        title: 'Rolling # of orders'
-        description: 'Count of orders'
-        rolling_window:
-          trailing: unbounded
+        title: "# of orders"
+        meta:
+          key: "value" # will be passed as a prop to your components
 
     joins:
-      - name: products
-        sql: '{CUBE}.product_id = {products}.id'
+      - name: products # the name of the data model to join to (not the table)
+        sql: "{CUBE}.product_id = {products}.id"
         relationship: many_to_one
 
-      - name: customers
-        sql: '{CUBE}.customer_id = {customers}.id'
+      - name: customers # the name of the data model to join to (not the table)
+        sql: "{CUBE}.customer_id = {customers}.id"
         relationship: many_to_one
-        
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
