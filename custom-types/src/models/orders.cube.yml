@@ -1,0 +1,38 @@
+cubes:
+  - name: orders
+    data_source: default
+    sql_table: public.orders
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+
+      - name: created_at
+        sql: created_at
+        type: time
+        description: 'The time when the order was created'
+
+    measures:
+      - name: count
+        type: count
+        title: '# of orders'
+        description: 'Count of orders'
+
+      - name: rolling_count
+        type: count
+        title: 'Rolling # of orders'
+        description: 'Count of orders'
+        rolling_window:
+          trailing: unbounded
+
+    joins:
+      - name: products
+        sql: '{CUBE}.product_id = {products}.id'
+        relationship: many_to_one
+
+      - name: customers
+        sql: '{CUBE}.customer_id = {customers}.id'
+        relationship: many_to_one
+        

@@ -1,0 +1,37 @@
+cubes:
+  - name: products
+    data_source: default
+    sql_table: public.products
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+        public: true
+
+      - name: name
+        sql: name
+        type: string
+
+      - name: size
+        sql: size
+        type: string
+
+    measures:
+      - name: count
+        type: count
+        title: '# of products'
+
+      - name: price
+        type: sum
+        title: Total USD
+        sql: price_usd
+        meta: 
+          pretext: '$'
+          posttext: ''
+
+    joins:
+      - name: orders
+        sql: "{CUBE}.id = {orders}.product_id"
+        relationship: one_to_many
