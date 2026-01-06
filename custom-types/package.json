@@ -22,7 +22,7 @@
     "cross-env": "^10.1.0"
   },
   "dependencies": {
-    "@embeddable.com/remarkable-pro": "^0.0.16",
-    "react": "^19.2.3"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }

@@ -1,10 +1,10 @@
-import libraryThemeProvider0 from '@embeddable.com/remarkable-pro/dist/embeddable-theme-0137e.js'
+
 import localThemeProvider from '/Users/lailalos/Repositories/code-examples/custom-types/embeddable.theme.ts';
 
 import { defineTheme } from '@embeddable.com/core';
 
 const parentProviders = [
-  libraryThemeProvider0
+  
 ];
 
 export default function combinedThemeProvider(clientContext) {

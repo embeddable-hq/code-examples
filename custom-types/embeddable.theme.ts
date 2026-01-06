@@ -1,11 +1,7 @@
-import { defineTheme } from "@embeddable.com/core";
-import { Theme, DeepPartial } from "@embeddable.com/remarkable-pro";
-import { darkTheme } from "./dark-theme";
+import { defineTheme } from '@embeddable.com/core';
 
-const themeProvider = (clientContext: any, parentTheme: Theme): Theme => {
-  const newTheme: DeepPartial<Theme> =
-    clientContext.theme === "dark" ? darkTheme : {};
-  const theme = defineTheme(parentTheme, newTheme) as Theme;
+const themeProvider = (_clientContext: any, parentTheme: ReturnType<typeof defineTheme>) => {
+  const theme = defineTheme(parentTheme, {});
   return theme;
 };
 
