@@ -18,17 +18,17 @@ cubes:
     measures:
       - name: count
         type: count
-        title: "# of orders"
+        title: '# of orders'
         meta:
-          key: "value" # will be passed as a prop to your components
+          key: 'value' # will be passed as a prop to your components
 
     joins:
       - name: products # the name of the data model to join to (not the table)
-        sql: "{CUBE}.product_id = {products}.id"
+        sql: '{CUBE}.product_id = {products}.id'
         relationship: many_to_one
 
       - name: customers # the name of the data model to join to (not the table)
-        sql: "{CUBE}.customer_id = {customers}.id"
+        sql: '{CUBE}.customer_id = {customers}.id'
         relationship: many_to_one
 
     pre_aggregations:

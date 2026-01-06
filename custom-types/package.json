@@ -18,6 +18,11 @@
     "@embeddable.com/react": "^2.12.1",
     "@embeddable.com/sdk-core": "^4.1.4",
     "@embeddable.com/sdk-react": "^4.0.8",
+    "@types/react": "^19.2.7",
     "cross-env": "^10.1.0"
+  },
+  "dependencies": {
+    "@embeddable.com/remarkable-pro": "^0.0.16",
+    "react": "^19.2.3"
   }
 }
